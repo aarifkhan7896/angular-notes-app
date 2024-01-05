@@ -2,11 +2,17 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddNotesComponent } from './add-notes/add-notes.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-user-notes',
   standalone: true,
-  imports: [CommonModule, AddNotesComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AddNotesComponent,
+    ReactiveFormsModule,
+    MatCardModule,
+  ],
   templateUrl: './user-notes.component.html',
   styleUrls: ['./user-notes.component.scss'],
 })

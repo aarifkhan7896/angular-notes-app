@@ -1,0 +1,11 @@
+:host{
+    .add-notes-container{
+        .form-field-width{
+            width: 100%;
+
+            textarea{
+                resize: none;
+            }
+        }
+    }
+}
