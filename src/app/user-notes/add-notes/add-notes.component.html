@@ -2,7 +2,15 @@
   <mat-form-field class="form-field-width">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Title" formControlName="title" />
+    <mat-error
+      *ngIf="
+        notesForm.get('title')?.hasError('required') ||
+        notesForm.get('title')?.touched
+      "
+      >Please enter a note title</mat-error
+    >
   </mat-form-field>
+
   <mat-form-field class="form-field-width">
     <mat-label>Description</mat-label>
     <textarea
@@ -11,5 +19,8 @@
       formControlName="description"
     ></textarea>
   </mat-form-field>
-  <app-action-buttons (saveButtonEvent)="saveForm()"></app-action-buttons>
+  <app-action-buttons
+    (saveButtonEvent)="saveForm()"
+    [formStatus]="notesForm.status"
+  ></app-action-buttons>
 </div>

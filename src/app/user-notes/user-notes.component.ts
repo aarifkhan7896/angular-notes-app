@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddNotesComponent } from './add-notes/add-notes.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
@@ -24,8 +29,8 @@ export class UserNotesComponent {
   createForm(): FormGroup {
     return this.fb.group({
       addNotes: this.fb.group({
-        title: [],
-        description: [],
+        title: [null, [Validators.required]],
+        description: [null],
       }),
     });
   }
