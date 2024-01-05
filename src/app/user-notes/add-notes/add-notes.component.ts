@@ -24,6 +24,7 @@ import { ActionButtonsComponent } from 'src/app/shared-components/action-buttons
 })
 export class AddNotesComponent {
   @Input() formGroupName!: string;
+  @Output() saveEvent = new EventEmitter<FormGroup>();
 
   notesForm!: FormGroup;
 
@@ -33,5 +34,9 @@ export class AddNotesComponent {
     this.notesForm = this.rootFormGroup.control.get(
       this.formGroupName
     ) as FormGroup;
+  }
+
+  saveForm() {
+    this.saveEvent.emit(this.notesForm);
   }
 }

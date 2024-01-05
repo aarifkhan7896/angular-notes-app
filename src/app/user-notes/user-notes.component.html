@@ -1,9 +1,10 @@
 <div [formGroup]="notesForm" class="user-notes-container">
   <mat-card>
     <mat-card-content>
-      <app-add-notes formGroupName="addNotes"></app-add-notes>
+      <app-add-notes
+        formGroupName="addNotes"
+        (saveEvent)="save($event)"
+      ></app-add-notes>
     </mat-card-content>
   </mat-card>
 </div>
-
-{{ notesForm.value | json }}

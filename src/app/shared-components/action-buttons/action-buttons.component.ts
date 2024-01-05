@@ -10,7 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./action-buttons.component.scss'],
 })
 export class ActionButtonsComponent {
+  @Output() saveButtonEvent = new EventEmitter<MouseEvent>();
+
   saveClick(event: MouseEvent) {
-    console.log('event', event);
+    this.saveButtonEvent.emit(event);
   }
 }

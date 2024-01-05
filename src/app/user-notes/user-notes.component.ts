@@ -29,4 +29,8 @@ export class UserNotesComponent {
       }),
     });
   }
+
+  save(form: FormGroup) {
+    console.log(form.getRawValue());
+  }
 }
