@@ -1,7 +1,11 @@
+{{ notesForm.get("title")?.hasError("maxlength") | json }}
 <div [formGroup]="notesForm" class="add-notes-container">
   <mat-form-field class="form-field-width">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Title" formControlName="title" />
+    <mat-error *ngIf="notesForm.get('title')?.hasError('maxlength')"
+      >Maximum 20 characters allowed.</mat-error
+    >
     <mat-error
       *ngIf="
         notesForm.get('title')?.hasError('required') ||
