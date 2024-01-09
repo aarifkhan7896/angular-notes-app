@@ -8,4 +8,8 @@
     </mat-card-content>
   </mat-card>
 </div>
-{{ getNotes$ | async | json }}
+
+<app-user-notes-list
+  [notes]="(usernotes$ | async)?.notes"
+  [loading]="loading$ | async"
+></app-user-notes-list>

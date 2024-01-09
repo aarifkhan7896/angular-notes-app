@@ -11,6 +11,7 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { NotesService } from '../services/notes.service';
+import { UserNotesListComponent } from './user-notes-list/user-notes-list.component';
 
 @Component({
   selector: 'app-user-notes',
@@ -20,13 +21,15 @@ import { NotesService } from '../services/notes.service';
     AddNotesComponent,
     ReactiveFormsModule,
     MatCardModule,
+    UserNotesListComponent,
   ],
   templateUrl: './user-notes.component.html',
   styleUrls: ['./user-notes.component.scss'],
   providers: [NotesService],
 })
 export class UserNotesComponent implements OnInit, OnDestroy {
-  getNotes$ = this.notesService.notes$;
+  usernotes$ = this.notesService.notes$;
+  loading$ = this.notesService.loading$;
   #destroy$ = new Subject<void>();
   notesForm: FormGroup = this.createForm();
 

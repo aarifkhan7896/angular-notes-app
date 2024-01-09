@@ -8,5 +8,6 @@ export class NotesServieMock implements PublicOnly<NotesService> {
     message: '',
     notes: [],
   });
+  loading$ = new BehaviorSubject<boolean>(false);
   getnotes = jasmine.createSpy('getnotes');
 }
