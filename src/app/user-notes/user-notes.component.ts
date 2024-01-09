@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { NotesService } from '../services/notes.service';
 
 @Component({
   selector: 'app-user-notes',
@@ -22,12 +23,19 @@ import { Subject, debounceTime, takeUntil } from 'rxjs';
   ],
   templateUrl: './user-notes.component.html',
   styleUrls: ['./user-notes.component.scss'],
+  providers: [NotesService],
 })
 export class UserNotesComponent implements OnInit, OnDestroy {
+  getNotes$ = this.notesService.notes$;
   #destroy$ = new Subject<void>();
   notesForm: FormGroup = this.createForm();
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly notesService: NotesService
+  ) {
+    this.notesService.getnotes();
+  }
 
   get descriptionControl(): AbstractControl | null {
     return this.notesForm.get('addNotes.description');
