@@ -1,5 +1,5 @@
 <div class="action-buttons-container">
-  <button mat-raised-button color="warn">
+  <button mat-raised-button color="warn" (click)="cancelClick($event)">
     {{ cancelButtonLabel || deletebuttonLabel }}
   </button>
   <button

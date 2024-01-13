@@ -19,7 +19,8 @@
           <app-action-buttons
             [editButtonLabel]="'Edit'"
             [deletebuttonLabel]="'Delete'"
-            (buttonEvent)="onDelete(note._id)"
+            (cancelOrDeleteButtonEvent)="onDelete(note._id)"
+            (saveOrEditbuttonEvent)="onEdit()"
           ></app-action-buttons>
         </mat-action-row>
       </mat-expansion-panel>

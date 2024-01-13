@@ -25,7 +25,8 @@
   <app-action-buttons
     [cancelButtonLabel]="'Cancel'"
     [saveButtonLabel]="'Save'"
-    (buttonEvent)="saveForm()"
+    (saveOrEditbuttonEvent)="saveForm()"
+    (cancelOrDeleteButtonEvent)="reset()"
     [formStatus]="notesForm.status"
   ></app-action-buttons>
 </div>

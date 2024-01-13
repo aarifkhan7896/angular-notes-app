@@ -25,6 +25,7 @@ import { ActionButtonsComponent } from 'src/app/shared-components/action-buttons
 export class AddNotesComponent {
   @Input() formGroupName!: string;
   @Output() saveEvent = new EventEmitter<FormGroup>();
+  @Output() resetEvent = new EventEmitter<void>();
 
   notesForm!: FormGroup;
 
@@ -38,5 +39,9 @@ export class AddNotesComponent {
 
   saveForm() {
     this.saveEvent.emit(this.notesForm);
+  }
+
+  reset() {
+    this.resetEvent.emit();
   }
 }

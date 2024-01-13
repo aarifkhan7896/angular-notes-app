@@ -30,4 +30,8 @@ export class UserNotesListComponent {
   onDelete(id: string) {
     this.deleteEvent.emit(id);
   }
+
+  onEdit() {
+    console.log('edit clicked');
+  }
 }

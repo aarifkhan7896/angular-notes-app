@@ -55,6 +55,11 @@ export class UserNotesComponent implements OnInit, OnDestroy {
 
   save(form: FormGroup) {
     this.notesService.addNote(form.getRawValue());
+    this.notesForm.reset();
+  }
+
+  reset() {
+    this.notesForm.reset();
   }
 
   delete(id: string) {

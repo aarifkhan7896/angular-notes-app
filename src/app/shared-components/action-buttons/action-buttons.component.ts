@@ -17,9 +17,14 @@ export class ActionButtonsComponent {
   @Input() cancelButtonLabel: string = '';
   @Input() editButtonLabel: string = '';
 
-  @Output() buttonEvent = new EventEmitter<MouseEvent>();
+  @Output() saveOrEditbuttonEvent = new EventEmitter<MouseEvent>();
+  @Output() cancelOrDeleteButtonEvent = new EventEmitter<MouseEvent>();
 
   saveClick(event: MouseEvent) {
-    this.buttonEvent.emit(event);
+    this.saveOrEditbuttonEvent.emit(event);
+  }
+
+  cancelClick(event: MouseEvent) {
+    this.cancelOrDeleteButtonEvent.emit(event);
   }
 }
