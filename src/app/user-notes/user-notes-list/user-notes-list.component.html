@@ -16,9 +16,11 @@
         </mat-expansion-panel-header>
         <p>{{ note.description }}</p>
         <mat-action-row>
-          <button mat-raised-button color="warn" (click)="onDelete(note._id)">
-            Delete
-          </button>
+          <app-action-buttons
+            [editButtonLabel]="'Edit'"
+            [deletebuttonLabel]="'Delete'"
+            (buttonEvent)="onDelete(note._id)"
+          ></app-action-buttons>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>

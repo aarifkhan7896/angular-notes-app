@@ -12,9 +12,14 @@ import { FormControlStatus } from '@angular/forms';
 })
 export class ActionButtonsComponent {
   @Input() formStatus: FormControlStatus = 'PENDING';
-  @Output() saveButtonEvent = new EventEmitter<MouseEvent>();
+  @Input() deletebuttonLabel: string = '';
+  @Input() saveButtonLabel: string = '';
+  @Input() cancelButtonLabel: string = '';
+  @Input() editButtonLabel: string = '';
+
+  @Output() buttonEvent = new EventEmitter<MouseEvent>();
 
   saveClick(event: MouseEvent) {
-    this.saveButtonEvent.emit(event);
+    this.buttonEvent.emit(event);
   }
 }

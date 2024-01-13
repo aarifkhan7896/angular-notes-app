@@ -34,7 +34,6 @@ export class NotesService {
   }
 
   addNote(note: Notes) {
-    console.log('hit', note);
     return this.httpClient
       .post('http://localhost:3000/api/notes', note)
       .pipe(tap(() => this.getnotes()))

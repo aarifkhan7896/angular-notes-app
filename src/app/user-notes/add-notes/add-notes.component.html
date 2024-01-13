@@ -23,7 +23,9 @@
     ></textarea>
   </mat-form-field>
   <app-action-buttons
-    (saveButtonEvent)="saveForm()"
+    [cancelButtonLabel]="'Cancel'"
+    [saveButtonLabel]="'Save'"
+    (buttonEvent)="saveForm()"
     [formStatus]="notesForm.status"
   ></app-action-buttons>
 </div>

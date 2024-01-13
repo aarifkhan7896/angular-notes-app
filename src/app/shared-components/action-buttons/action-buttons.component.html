@@ -1,11 +1,13 @@
 <div class="action-buttons-container">
-  <button mat-raised-button color="warn">Cancel</button>
+  <button mat-raised-button color="warn">
+    {{ cancelButtonLabel || deletebuttonLabel }}
+  </button>
   <button
     mat-raised-button
     color="primary"
     [disabled]="formStatus === 'INVALID'"
     (click)="saveClick($event)"
   >
-    Save
+    {{ editButtonLabel || saveButtonLabel }}
   </button>
 </div>
