@@ -1,0 +1,39 @@
+<div class="edit-notes-container">
+  <h1 mat-dialog-title>Edit Note</h1>
+  <div mat-dialog-content>
+    <div [formGroup]="editNoteForm">
+      <mat-form-field class="form-field-width">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title" />
+        <mat-error *ngIf="editNoteForm.get('title')?.hasError('maxlength')"
+          >Maximum 20 characters allowed.</mat-error
+        >
+        <mat-error
+          *ngIf="
+            editNoteForm.get('title')?.hasError('required') ||
+            editNoteForm.get('title')?.touched
+          "
+          >Please enter a note title</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form-field-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <!-- <button mat-button [mat-dialog-close]="true">OK</button>
+    <button mat-button [mat-dialog-close]="false">Cancel</button> -->
+    <app-action-buttons
+      [cancelButtonLabel]="'Cancel'"
+      [saveButtonLabel]="'Save'"
+      [formStatus]="editNoteForm.status"
+    ></app-action-buttons>
+  </div>
+</div>

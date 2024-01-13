@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddNotesComponent } from './add-notes/add-notes.component';
 import {
@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
 import { NotesService } from '../services/notes.service';
 import { UserNotesListComponent } from './user-notes-list/user-notes-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-notes',
@@ -22,12 +23,15 @@ import { UserNotesListComponent } from './user-notes-list/user-notes-list.compon
     ReactiveFormsModule,
     MatCardModule,
     UserNotesListComponent,
+    MatDialogModule,
   ],
   templateUrl: './user-notes.component.html',
   styleUrls: ['./user-notes.component.scss'],
   providers: [NotesService],
 })
 export class UserNotesComponent implements OnInit, OnDestroy {
+  @ViewChild('userNotesList') userNotesList!: UserNotesListComponent;
+
   usernotes$ = this.notesService.notes$;
   loading$ = this.notesService.loading$;
   #destroy$ = new Subject<void>();
@@ -64,6 +68,10 @@ export class UserNotesComponent implements OnInit, OnDestroy {
 
   delete(id: string) {
     this.notesService.deleteNote(id);
+  }
+
+  openDialog() {
+    this.userNotesList.openDialog();
   }
 
   ngOnInit(): void {

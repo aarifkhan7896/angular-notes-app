@@ -11,7 +11,9 @@
 </div>
 
 <app-user-notes-list
+  #userNotesList
   [notes]="(usernotes$ | async)?.notes"
   [loading]="loading$ | async"
   (deleteEvent)="delete($event)"
+  (openEditNoteModel)="openDialog()"
 ></app-user-notes-list>
