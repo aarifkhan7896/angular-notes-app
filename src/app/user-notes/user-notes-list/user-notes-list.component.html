@@ -15,6 +15,11 @@
           <mat-panel-title> {{ note.title }} </mat-panel-title>
         </mat-expansion-panel-header>
         <p>{{ note.description }}</p>
+        <mat-action-row>
+          <button mat-raised-button color="warn" (click)="onDelete(note._id)">
+            Delete
+          </button>
+        </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
   </ng-template>

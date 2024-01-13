@@ -57,6 +57,10 @@ export class UserNotesComponent implements OnInit, OnDestroy {
     this.notesService.addNote(form.getRawValue());
   }
 
+  delete(id: string) {
+    this.notesService.deleteNote(id);
+  }
+
   ngOnInit(): void {
     if (this.notesForm.status === 'INVALID') {
       this.descriptionControl?.disable();

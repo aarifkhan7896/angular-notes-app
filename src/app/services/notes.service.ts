@@ -40,4 +40,11 @@ export class NotesService {
       .pipe(tap(() => this.getnotes()))
       .subscribe();
   }
+
+  deleteNote(id: string) {
+    return this.httpClient
+      .delete('http://localhost:3000/api/notes/' + id)
+      .pipe(tap(() => this.getnotes()))
+      .subscribe();
+  }
 }

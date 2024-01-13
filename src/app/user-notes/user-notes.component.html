@@ -12,4 +12,5 @@
 <app-user-notes-list
   [notes]="(usernotes$ | async)?.notes"
   [loading]="loading$ | async"
+  (deleteEvent)="delete($event)"
 ></app-user-notes-list>

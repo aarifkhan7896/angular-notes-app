@@ -53,4 +53,18 @@ app.get('/api/notes', (req,res)=>{
     });
 })
 
+app.delete('/api/notes/:id',(req,res)=>{
+    Notes.deleteOne({_id: req.params.id}).then((note)=>{
+        res.status(200).json({
+            message: "Note Deleted Successfully",
+            notes: note
+        })
+    }).catch((error) => {
+        res.status(500).json({
+            message: "Error deleting note",
+            error: error
+        });
+    });;
+})
+
 module.exports = app;
