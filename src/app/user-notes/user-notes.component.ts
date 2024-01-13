@@ -54,7 +54,7 @@ export class UserNotesComponent implements OnInit, OnDestroy {
   }
 
   save(form: FormGroup) {
-    console.log(form.getRawValue());
+    this.notesService.addNote(form.getRawValue());
   }
 
   ngOnInit(): void {
