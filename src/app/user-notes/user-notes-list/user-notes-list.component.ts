@@ -26,7 +26,7 @@ export class UserNotesListComponent {
   @Input() loading: boolean | null = false;
 
   @Output() deleteEvent = new EventEmitter<string>();
-  @Output() openEditNoteModel = new EventEmitter<void>();
+  @Output() openEditNoteModel = new EventEmitter<Notes>();
 
   panelOpenState = false;
 
@@ -36,13 +36,14 @@ export class UserNotesListComponent {
     this.deleteEvent.emit(id);
   }
 
-  onEdit() {
-    this.openEditNoteModel.emit();
+  onEdit(note: Notes) {
+    this.openEditNoteModel.emit(note);
   }
 
-  openDialog(): void {
+  openDialog(note: Notes): void {
     const dialogRef = this.dialog.open(EditNoteComponent, {
       width: '550px', // Set the width as per your requirement
+      data: { title: note.title, description: note.description },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

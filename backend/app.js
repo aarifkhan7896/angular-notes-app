@@ -4,9 +4,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Notes = require('./model/user-notes');
 
-// const cors = require('cors');
-// app.use(cors());
-
 mongoose.connect('mongodb://localhost:27017/userNotes')
 .then(()=> console.log('Connected Successfully'))
 .catch((err)=>console.log(err));
@@ -64,7 +61,7 @@ app.delete('/api/notes/:id',(req,res)=>{
             message: "Error deleting note",
             error: error
         });
-    });;
+    });
 })
 
 module.exports = app;

@@ -15,5 +15,5 @@
   [notes]="(usernotes$ | async)?.notes"
   [loading]="loading$ | async"
   (deleteEvent)="delete($event)"
-  (openEditNoteModel)="openDialog()"
+  (openEditNoteModel)="openDialog($event)"
 ></app-user-notes-list>
