@@ -64,4 +64,22 @@ app.delete('/api/notes/:id',(req,res)=>{
     });
 })
 
+app.patch('/api/notes/:id',(req,res)=>{
+    const note = {
+        title: req.body.title,
+        description: req.body.description
+    };
+    Notes.updateOne({_id: req.params.id}, {$set: note}).then((note)=>{
+        res.status(200).json({
+            message: "Note Updated Successfully",
+            notes: note
+        })
+    }).catch((error) => {
+        res.status(500).json({
+            message: "Error updating note",
+            error: error
+        });
+    });
+})
+
 module.exports = app;
