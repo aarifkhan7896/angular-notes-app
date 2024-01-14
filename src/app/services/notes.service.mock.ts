@@ -10,4 +10,7 @@ export class NotesServieMock implements PublicOnly<NotesService> {
   });
   loading$ = new BehaviorSubject<boolean>(false);
   getnotes = jasmine.createSpy('getnotes');
+  editNote = jasmine.createSpy('editNote');
+  deleteNote = jasmine.createSpy('deleteNote');
+  addNote = jasmine.createSpy('addNote');
 }
