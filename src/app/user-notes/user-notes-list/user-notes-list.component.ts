@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ActionButtonsComponent } from 'src/app/shared-components/action-buttons/action-buttons.component';
 import { EditNoteComponent } from 'src/app/shared-components/edit-note/edit-note.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NotesService } from 'src/app/services/notes.service';
 
 @Component({
   selector: 'app-user-notes-list',
@@ -30,7 +31,10 @@ export class UserNotesListComponent {
 
   panelOpenState = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private readonly notesService: NotesService
+  ) {}
 
   onDelete(id: string) {
     this.deleteEvent.emit(id);
@@ -43,11 +47,11 @@ export class UserNotesListComponent {
   openDialog(note: Notes): void {
     const dialogRef = this.dialog.open(EditNoteComponent, {
       width: '550px', // Set the width as per your requirement
-      data: { title: note.title, description: note.description },
+      data: note,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('Dialog closed with result:', result);
+    dialogRef.afterClosed().subscribe(() => {
+      this.notesService.getnotes();
     });
   }
 }

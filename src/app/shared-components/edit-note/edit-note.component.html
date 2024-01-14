@@ -33,6 +33,8 @@
     <app-action-buttons
       [cancelButtonLabel]="'Cancel'"
       [saveButtonLabel]="'Save'"
+      (saveOrEditbuttonEvent)="saveForm()"
+      (cancelOrDeleteButtonEvent)="closeModal()"
       [formStatus]="editNoteForm.status"
     ></app-action-buttons>
   </div>

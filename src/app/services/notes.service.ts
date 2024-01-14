@@ -46,4 +46,12 @@ export class NotesService {
       .pipe(tap(() => this.getnotes()))
       .subscribe();
   }
+
+  editNote(id: string, note: Notes) {
+    const noteData = { title: note.title, description: note.description };
+    return this.httpClient
+      .patch('http://localhost:3000/api/notes/' + id, noteData)
+      .pipe(tap(() => this.getnotes()))
+      .subscribe();
+  }
 }
