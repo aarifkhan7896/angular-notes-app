@@ -1,8 +1,37 @@
-const app = require("./app");
+const express = require("express");
 const debug = require("debug")("node-angular");
 const http = require("http");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const noteRoutes = require("./routes/noteRoutes");
+const app = express();
 
-const normalizePort = val => {
+// Configure bodyparser to handle post requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Connect to Mongoose and set connection variable
+mongoose
+  .connect("mongodb://localhost:27017/userNotes")
+  .then(() => console.log("DB Connected Successfully"))
+  .catch((err) => console.log("Error Connecting DB:", err));
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With,Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+  next();
+});
+
+app.use("/api", noteRoutes);
+
+const normalizePort = (val) => {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -18,7 +47,7 @@ const normalizePort = val => {
   return false;
 };
 
-const onError = error => {
+const onError = (error) => {
   if (error.syscall !== "listen") {
     throw error;
   }
